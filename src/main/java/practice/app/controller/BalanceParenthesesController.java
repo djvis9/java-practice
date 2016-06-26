@@ -24,7 +24,7 @@ public class BalanceParenthesesController {
      */
     @RequestMapping(value = "/parentheses", method = RequestMethod.POST)
     public ResponseEntity<Boolean> post(@RequestParam("text") String text) {
-      
+        
         return new ResponseEntity<Boolean>(balanceParenthesesService.isValid(text), HttpStatus.OK);
     }
 }
