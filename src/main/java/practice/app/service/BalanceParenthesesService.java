@@ -32,9 +32,4 @@ public class BalanceParenthesesService {
       
         return counter == 0;
     }
-    
-    public boolean isValidBraces(String text) {
-        // TODO: implment this method
-        return false;
-    }
 }
