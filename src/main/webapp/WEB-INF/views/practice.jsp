@@ -1,8 +1,11 @@
 <html>
     <head>
+        <!-- Bootstrap -->
+        <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
       
-        <script   src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
+        <!-- React and friends -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
@@ -13,21 +16,37 @@
         <script type="text/babel" src="/static/practice.jsx"></script>
     </head>
     <body>
-      <div class="container">
-        
-          <div class="jumbotron">
-              <h1>
-                Java Practice
-              </h1>
-              <p>
-                  A project to practice Java, Spring, REST, React, and Bootstrap.               
-              </p>
-              <p>
-                  View the code for this project: <a href="https://github.com/djvis9/java-practice">https://github.com/djvis9/java-practice</a>  
-              </p>
-          </div>
+        <div class="container">
           
-          <div id="practiceApp"></div>
-      </div>
+            <div class="jumbotron">
+                <h1>
+                  Java Practice
+                </h1>
+                <p>
+                    A project to practice Java, Spring, REST, React, and Bootstrap.               
+                </p>
+                <p>
+                    View the code for this project: <a href="https://github.com/djvis9/java-practice">https://github.com/djvis9/java-practice</a>  
+                </p>
+            </div>
+
+            <div id="content">
+            
+                <ul id="tabs" class="nav nav-pills" data-tabs="tabs">
+                    <li class="active"><a href="#balanceParentheses" data-toggle="tab">Balance Parentheses</a></li>
+                    <li><a href="#balanceBraces" data-toggle="tab">Balance Braces</a></li>
+                </ul>
+                
+                <div id="my-tab-content" class="tab-content">
+                    <div class="tab-pane active" id="balanceParentheses">
+                        <div id="parenthesesApp"></div>
+                    </div>
+                    <div class="tab-pane" id="balanceBraces">
+                        <div id="bracesApp"></div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
     </body>
 </html>
