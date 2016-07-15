@@ -35,6 +35,7 @@
                 <ul id="tabs" class="nav nav-pills" data-tabs="tabs">
                     <li class="active"><a href="#balanceParentheses" data-toggle="tab">Balance Parentheses</a></li>
                     <li><a href="#balanceBraces" data-toggle="tab">Balance Braces</a></li>
+                    <li><a href="#powerset" data-toggle="tab">Powerset</a></li>
                 </ul>
                 
                 <div id="my-tab-content" class="tab-content">
@@ -44,6 +45,10 @@
                     <div class="tab-pane" id="balanceBraces">
                         <div id="bracesApp"></div>
                     </div>
+                    <div class="tab-pane" id="powerset">
+                        <div id="powersetApp"></div>
+                    </div>
+                    
                 </div>
                 
             </div>
