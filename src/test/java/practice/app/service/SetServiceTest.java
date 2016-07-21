@@ -2,9 +2,13 @@ package practice.app.service;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import practice.app.util.SetSizeComparator;
 
 public class SetServiceTest {
 
@@ -12,7 +16,7 @@ public class SetServiceTest {
     public void testPowerset() {
         
         SetService<String> setService = new SetService<>();
-        Set<Set<String>> expected = new HashSet<>();
+        SortedSet<SortedSet<String>> expected = new TreeSet<>(new SetSizeComparator<String>());
         expected.add(createSet(""));
         expected.add(createSet("x"));
         expected.add(createSet("y"));
@@ -27,32 +31,13 @@ public class SetServiceTest {
         input.add("y");
         input.add("z");
         
+        SortedSet<SortedSet<String>> actual = setService.powerset(input);
         
-        Set<Set<String>> actual = setService.powerset(input);
-        
-        Assert.assertEquals(expected.size(), actual.size());
-        
-        // assert that every set in the expected set is also in the powerset
-        for(Set<String> target : expected ) {
-            Assert.assertTrue(doesSetOfSetsContainSet(actual, target));
-        }
+        Assert.assertTrue(expected.equals(actual));
     }
     
-    public boolean doesSetOfSetsContainSet(Set<Set<String>> setOfSets, Set<String> target) {
-        for(Set<String> set : setOfSets) {
-            if (set.isEmpty() && target.isEmpty()) {
-                return true;
-            }
-            if(set.containsAll(target)) {
-                return true;
-            }
-        }
-        
-        return false;
-    }
-    
-    public Set<String> createSet(String s) {
-        Set<String> set = new HashSet<>();
+    public SortedSet<String> createSet(String s) {
+        SortedSet<String> set = new TreeSet<>();
         
         for(int i=0; i<s.length(); i++) {
             set.add("" + s.charAt(i));

@@ -2,6 +2,7 @@ package practice.app.controller;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.SortedSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,7 @@ public class PowersetController {
     private final static String ALPHA_CHARS = "abcdefghijklmnopqrstuvwxyz";
 
     @RequestMapping(value = "/powerset", method = RequestMethod.POST)
-    public ResponseEntity<Set<Set<String>>> post(@RequestParam("text") String text) {
+    public ResponseEntity<SortedSet<SortedSet<String>>> post(@RequestParam("text") String text) {
 
         Set<String> input = new HashSet<>();
         
@@ -32,6 +33,6 @@ public class PowersetController {
             }
         }
         
-        return new ResponseEntity<Set<Set<String>>>(setService.powerset(input), HttpStatus.OK);
+        return new ResponseEntity<SortedSet<SortedSet<String>>>(setService.powerset(input), HttpStatus.OK);
     }
 }

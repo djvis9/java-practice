@@ -1,12 +1,17 @@
 package practice.app.service;
 
-import java.util.HashSet;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.springframework.stereotype.Service;
 
+import practice.app.util.SetSizeComparator;
+
 @Service
-public class SetService<T> {
+public class SetService<T extends Comparable<T>> {
+    
+    private SetSizeComparator<T> setSizeComparator = new SetSizeComparator<>();
     
     /**
      * Return the powerset of a set.
@@ -29,14 +34,16 @@ public class SetService<T> {
      * @param set the set for which we will return a powerset
      * @return powerset of the given set
      */
-    public Set<Set<T>> powerset(Set<T> set) {
+    public SortedSet<SortedSet<T>> powerset(Set<T> set) {
         int size = set.size();
         int twoToPowerOfSetSize = (int)Math.pow(2, size);
         Object[] elements = set.toArray();
-        Set<Set<T>> output = new HashSet<>(twoToPowerOfSetSize);
+
+        // TreeSet will keep the set of sets in ascending order by size
+        SortedSet<SortedSet<T>> output = new TreeSet<>(setSizeComparator);
         
         for (int i=0; i<twoToPowerOfSetSize; i++) {
-            Set<T> current = new HashSet<>();
+            SortedSet<T> current = new TreeSet<>();
             for(int j=0; j<size; j++) {
                 if( ((i >> j) & 1) == 1) {
                     current.add((T)elements[j]);
@@ -47,4 +54,5 @@ public class SetService<T> {
         
         return output;
     }
+
 }
