@@ -43,7 +43,7 @@ var ValidateText = React.createClass({
     handleChange: function(e) {
         if(e.target.value != "") {
             // Check if the user entered valid text
-            $.post(this.props.validationUrl, {text: e.target.value}, function(response) {
+            $.get(this.props.validationUrl, {text: e.target.value}, function(response) {
                 if(response === true) {
                     this.setState({isValid: <ValidMessage />});
                 } else if (response === false) {
@@ -107,7 +107,7 @@ var RestQuery = React.createClass({
     handleChange: function(e) {
         var input = e.target.value;
         if(input != "") {
-            $.post(this.props.url, {text: input}, function(response) {
+            $.get(this.props.url, {text: input}, function(response) {
                 this.setState({output: this.props.formatOutput(input, response)});
             }.bind(this));
         }
@@ -213,4 +213,3 @@ var getFormattedPowerset = function(input, powerset) {
 ReactDOM.render(<ValidateText title="Balance Braces" description='Enter some braces (eg. "{[()]}") into the text field to check if they are valid.' validationUrl="braces" />, document.getElementById('bracesApp'));
 ReactDOM.render(<ValidateText title="Balance Parentheses" description='Enter some parentheses into the text field to check if they are valid.' validationUrl="parentheses" />, document.getElementById('parenthesesApp'));
 ReactDOM.render(<RestQuery title="Powerset" description='Enter a set of charecters (eg. "xyz") to get a powerset.' url="powerset" formatOutput={getFormattedPowerset} />, document.getElementById('powersetApp'));
-    

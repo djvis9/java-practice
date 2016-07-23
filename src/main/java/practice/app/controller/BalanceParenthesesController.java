@@ -22,7 +22,7 @@ public class BalanceParenthesesController {
      *  @param text check this text for balanced parentheses
      *  @return true if text contains balanced parentheses; false otherwise
      */
-    @RequestMapping(value = "/parentheses", method = RequestMethod.POST)
+    @RequestMapping(value = "/parentheses", method = RequestMethod.GET)
     public ResponseEntity<Boolean> post(@RequestParam("text") String text) {
         
         return new ResponseEntity<Boolean>(balanceParenthesesService.isValid(text), HttpStatus.OK);

@@ -22,7 +22,7 @@ public class PowersetController {
     
     private final static String ALPHA_CHARS = "abcdefghijklmnopqrstuvwxyz";
 
-    @RequestMapping(value = "/powerset", method = RequestMethod.POST)
+    @RequestMapping(value = "/powerset", method = RequestMethod.GET)
     public ResponseEntity<SortedSet<SortedSet<String>>> post(@RequestParam("text") String text) {
 
         Set<String> input = new HashSet<>();

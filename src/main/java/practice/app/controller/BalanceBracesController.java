@@ -23,7 +23,7 @@ public class BalanceBracesController {
      * @param text check this text for balanced braces
      * @return true if text contains balanced braces; false otherwise
      */
-    @RequestMapping(value = "/braces", method = RequestMethod.POST)
+    @RequestMapping(value = "/braces", method = RequestMethod.GET)
     public ResponseEntity<Boolean> post(@RequestParam("text") String text) {
         
         return new ResponseEntity<Boolean>(balanceBracesService.isValid(text), HttpStatus.OK);
